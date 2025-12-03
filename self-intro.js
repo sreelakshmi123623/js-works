@@ -1,0 +1,5 @@
+console.log("Sreelakshmi T")
+console.log("Thaliyil house")
+console.log("BCA")
+console.log(2025)
+console.log(9465734629)
