@@ -2,6 +2,10 @@
 //code will run untill the condition gets fales
 
 
+//while loop = if we dont know the range
+//for loop = if we know the range
+
+
 
 
 //display numbers from 45 to 50
