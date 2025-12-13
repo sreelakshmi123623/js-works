@@ -8,8 +8,6 @@
 */
 
 
-
-
 for(r=1;r<=6;r++){
     var pattern = "";
     for(c=1;c<=6;c++){

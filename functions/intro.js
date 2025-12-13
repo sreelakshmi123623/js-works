@@ -9,10 +9,11 @@
 //     function body
 // }
 
+
+
 //2.function call
 
 //functionName()
-
 
 
 //example one //function without parameter and no  return value

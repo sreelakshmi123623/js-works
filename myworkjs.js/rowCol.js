@@ -1,8 +1,18 @@
-for(r=1;r<=6;r++){
+for(r=1;r<=5;r++){
+
+    var pattern ="";
+
     for(space=1;space<=5-r;space++){
-        
-    }
-    for(c=1;c<=6;c++){
+
+            pattern +=" ";
 
     }
+    for(c=1;c<=r;c++){
+
+        pattern +="* ";
+
+    }
+
+    console.log(pattern);
+
 }
