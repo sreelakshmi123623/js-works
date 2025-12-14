@@ -42,3 +42,10 @@ function nummerChek(num) {
 console.log(nummerChek(5));
 console.log(nummerChek(-4));
 console.log(nummerChek(0));
+
+
+
+function wishing(name1,name2){
+    return (`Good Morning ${name1},nice to meet you ${name2}`);
+}
+console.log(wishing("Arjun","Varun"));

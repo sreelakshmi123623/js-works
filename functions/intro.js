@@ -26,7 +26,7 @@ function sayHi(){
 sayHi();
 
 
-//example two //function without no  parameter and no return value
+//example two //function without parameter and no return value
 
 function greestings(){
     console.log("Good Morning");
