@@ -12,7 +12,12 @@
 //       trimEnd(){}  => it only removes the space in the right side
 //        padStart(){} => if the string is not in the maximum number of string space we can fill the balance empty space with a special character  // in padStart it fill the special character in the left side
 //        padEnd(){}  =>  if the string is not in the maximum number of string space we can fill the balance empty space with a special character  // in padEnd it fill the special character in the right side
-// }
+//        split(delimeter) => split(" ")   => used for split the words in a sentance (always return array)
+//        repeat(count)=>return as str //count- times the value need to repeat
+//         replace("old str","new str") => can replace an old character by a new character
+//         replaceAll("old str","new str")=> replaceAll can change if  the old str have in more than one place,we can change it to  the new one in one go
+//         indexOf("") => we can mention a character the it returns its index number, if we mention undefined character  it returns -1.
+//}
 
 
 
@@ -38,8 +43,8 @@ var companyName = "Luminar Technolab";
 //console.log(`new string:${companyName.trim()}.....`);//removes spaces like if there have \t,\n 
 //console.log(`lets see${companyName.trimStart()}..`);
 //console.log(`lets see${companyName.trimEnd()}...`);
-console.log(companyName.padStart(25,"$"));
-console.log(companyName.padEnd(25,"$"));
+//console.log(companyName.padStart(25,"$"));
+//console.log(companyName.padEnd(25,"$"));
 //
 //
 //
@@ -51,3 +56,24 @@ console.log(companyName.padEnd(25,"$"));
 //
 //let hideNumber = sliceNumber;
 //console.log(hideNumber.padEnd(10,"X"));
+
+//changing the word all to team
+var text = "hai#all#good#morning";
+                       //"old str","new str"
+var newText = text.replace("all","team");
+console.log(newText);
+
+
+//replace only remove the first # 
+var newest=text.replace("#"," ");
+console.log(newest);
+ 
+
+//for remoove all # in the text we use replaceAll()
+var newText = text.replaceAll("#"," ");
+console.log(newText);
+
+
+//the original text will not channge it remains the same
+console.log(text);
+
