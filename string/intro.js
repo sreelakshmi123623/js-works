@@ -1,3 +1,13 @@
+
+//string
+//define var str ="hello";
+//keeps order
+//duplicated allowed
+//immutable
+//methods
+
+
+
 // var string{
 //     length,   => //attribute
 //     toUppercase(){}   =>//method -  convert to touppercase ,return a new string

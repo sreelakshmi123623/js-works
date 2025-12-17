@@ -1,1 +1,0 @@
-//write a function that checks two strings are anagram

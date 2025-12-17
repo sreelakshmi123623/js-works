@@ -1,0 +1,12 @@
+
+var number =[2,3,4,5,6,7,7,8,3,9,9,7]
+
+
+
+console.log("\nfor find the sum of numbers");
+
+var sum =0;
+for(let n of number){
+    sum+=n;
+}
+console.log(sum);
