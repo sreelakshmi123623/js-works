@@ -1,6 +1,6 @@
 var number =[2,3,4,5,6,7,7,8,3,9,9,7]
 
-//min numkber
+//min number
 //max number
 //sum of number
 //sum of odd numbers
@@ -21,7 +21,7 @@ for(let n of number){
 console.log(min);
 
 
-console.log("\nfor find thee largest number");
+console.log("\nfor find the largest number");
 
 var maxNum=0;
 for(let n of number){

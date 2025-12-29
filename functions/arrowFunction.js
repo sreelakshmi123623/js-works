@@ -39,4 +39,4 @@ console.log(number(45,67));
 
 
 
-//hoisting =only if a keyword is defined in a program called function, even if we call a function then after defining it ,it runs(hoisting-it make the function keyword top before running )
+//hoisting =only if a keyword is defined in a program called function, even if we call a function before defining it ,it runs(hoisting-it make the function keyword top before running )

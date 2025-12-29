@@ -27,7 +27,9 @@
 //         replace("old str","new str") => can replace an old character by a new character
 //         replaceAll("old str","new str")=> replaceAll can change if  the old str have in more than one place,we can change it to  the new one in one go
 //         indexOf("") => we can mention a character the it returns its index number, if we mention undefined character  it returns -1.
+//         endsWith("")=> we can mention a word inside and can take the objects which are ending with 
 //}
+
 
 
 
@@ -87,3 +89,9 @@ console.log(newText);
 //the original text will not channge it remains the same
 console.log(text);
 
+
+
+var words = ["thoughtful","meaningful","beautiful","powerful","housefull"]
+
+var onlyWordsFul=words.filter(w=>w.endsWith("ful"))
+console.log(onlyWordsFul);
