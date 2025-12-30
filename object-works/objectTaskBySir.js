@@ -147,9 +147,14 @@ console.log(employeeLeave);
 
 console.log(employeeLeave);
 
+//converting to uppercase as object 
 let convertingToUpper ={};
 
 for(let key in employeeLeave){
     convertingToUpper[key.toUpperCase()]=employeeLeave[key]
 }
 console.log(convertingToUpper);
+
+//converting to uppercase as array
+var convartingUpper=Object.keys(employeeLeave).map(name=>name.toUpperCase())
+console.log(convartingUpper);
