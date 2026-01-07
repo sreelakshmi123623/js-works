@@ -25,6 +25,23 @@ var expenses = [
   { id: 20, title: "New Shirt", amount: 900, category: "shopping", owner: "amit", payment_method: "card", priority: "want" }
 ];
 
+//counting the payment method in expenses
+var paymentMethodcheck={}
+for(let e of expenses){
+    var paymentMethodE=e.payment_method
+    if(paymentMethodE in paymentMethodcheck){
+        paymentMethodcheck[paymentMethodE]+=1
+    }
+    else{
+        paymentMethodcheck[paymentMethodE]=1
+    }
+}
+console.log(paymentMethodcheck);
+
+
+
+
+
 
 // Q owner summary (total expenses of each owners)
 
@@ -148,17 +165,24 @@ for(let e of expenses){
 console.log(paymentMethod);
 
 
-//priority summary  owner
+//priority summary with respect to owner
 
 var prioritySummary={}
 for(let e of expenses){
     var owner=e.owner
      var priority=e.priority
-    if(!(owner in prioritySummary)){
-        prioritySummary[owner]={ need: 0, want: 0 };
+     var amount=e.amount
+    if(owner in prioritySummary){
+        prioritySummary[owner][priority]+=amount
     }
-    prioritySummary[owner][priority]++
-   
+    else{
+        if(priority=="need"){
+            prioritySummary[owner]={"need":amount,"want":0}
+        }
+        else{
+            prioritySummary[owner]={"need":0,"want":amount}
+        }
+    }
 }
 
 console.log(prioritySummary);

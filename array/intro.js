@@ -1,6 +1,6 @@
 //array[]
 //to store and organize multiple  object  for make the retrieving proccess simple
-//if we have to store and organize multiple objects with same or different type
+//to store and organize multiple objects with same or different type
 //keeps the order
 //duplicates are allowed
 //mutable => we can update after creation(after defining it)
@@ -50,8 +50,15 @@ for(let e of expenses){
     
 }
 
+
 //3
 //for find the total expense
+
+var total=expenses.reduce((sum,e)=>e+sum,0)
+console.log(total);
+
+//or
+
 console.log("\nfinding the total expenses");
 
 var total = 0;

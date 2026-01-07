@@ -14,9 +14,7 @@ var target = 8;
 //     i++
 // }
 
-
 var left = 0
-var count =0
 var right = arr.length-1;
 
 while(left<right){
@@ -31,7 +29,7 @@ while(left<right){
     else if(target>cursum){
         left++
     }
-    count++
+   
 
 }
-console.log(count);
+// console.log(count);

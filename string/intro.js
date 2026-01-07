@@ -45,8 +45,8 @@ var companyName = "Luminar Technolab";
 //console.log(companyName.toLowerCase());
 
 //console.log(companyName.charAt(5));  //taking single character from a string by index number  //return character at specified index  //only support positive indexing
-//console.log(companyName.at(-4));//...-9-8-7-6-5-4-3-2-1  //it support negative indexing and positive indexing also
-//                                //   Luminar  Technolab
+console.log(companyName.at(-4));//...-9-8-7-6-5-4-3-2-1  //it support negative indexing and positive indexing also
+                               //   Luminar  Technolab
 //
 //console.log(companyName.concat(".com",".edu"));
 //console.log(companyName.slice(0,7));  // in the ending it takes a number-1 from our indexing number (eg:Luminar  0123456    if the indexing is 0,6 output will be Lumina   // but we need the :Luminar completely so we should write it 0 to 7 (0,7))

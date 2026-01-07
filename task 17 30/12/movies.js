@@ -87,6 +87,11 @@ console.log(countM);
 var ascendingOrder=movies.sort((m1,m2)=>m1.price-m2.price)
 console.log(ascendingOrder);
 
+//sort the movies title by alphabetical order
+
+var alphabetical=movies.sort((m1,m2)=>m1.title.localeCompare(m2.title))
+console.log("\nalphabetical oorder =",alphabetical);
+
 
 //first thriller movie
 

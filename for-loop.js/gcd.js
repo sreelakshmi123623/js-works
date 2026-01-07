@@ -11,7 +11,5 @@ for(i=1;i<=minnumber;i++){
          gcd = i;
     console.log(gcd);
     }
-   
-
 }
 //console.log(gcd);

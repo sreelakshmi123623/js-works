@@ -4,8 +4,9 @@ var word = "racecar";
 
 var result = "";
 
-for(i=6;i>=0;i--){
+for(i=word.length-1;i>=0;i--){
     result = result+word[i];
+    
 }
 if (word==result) {
     console.log("palindrom");

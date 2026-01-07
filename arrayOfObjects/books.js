@@ -48,6 +48,8 @@ var highestPriced =books.reduce((b1,b2)=>b1.price>b2.price?b1:b2).price
  var lowest=books.reduce((b1,b2)=>b1.price<b2.price?b1:b2).price
  var lowestPriced=books.filter(b=>b.price==lowest)
  console.log(lowestPriced)
+
+ 
 // //count books in english
 
  var counting =books.filter(b=>b.language=="English").length

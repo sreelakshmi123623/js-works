@@ -8,8 +8,6 @@ var number =[2,3,4,5,6,7,7,8,3,9,9,7]
 //divisor of 3
 //avg number
 //most frequent of number
-
-
 console.log("\nfor find the smallest number");
 
 var min = number[0];

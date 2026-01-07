@@ -16,12 +16,16 @@
 
 //advanced array methods
 //map()//for apply functionality in all objects in an array
-//filter()//for take a  particular object//only return if the cindition is true //Returns the elements of an array that meet the condition specified in a callback function.
+//filter()//for take a  particular object//only return if the condition is true //Returns the elements of an array that meet the condition specified in a callback function.
 //reduce()//single value as output(processing the array and taking a single value)//with two parameters
 //sort()
 //some()
-//forEach()
 //find()
+//forEach()
+//some = output a boolean value true or false , like includes but here countries is array of object so includes doesnt work with object else we need to map and includes
+//find = for pick an object ,like filter but filter takes all the recodes if the condition is true - filter output as array,find returns as object(Returns the value of the first element in the array where predicate is true, and undefined otherwise.)
+//forEach = like map but map returns as array ,in forEach returns as variable
+
 
 
 
@@ -31,8 +35,8 @@
 let foods=["dosa","chapathy","salt-mango-tree","rice","water"];
 
 
-// foods.push("fried-rice");
-// console.log(foods);
+foods.push("fried-rice");
+console.log(foods);
 
 
 // foods.pop();
@@ -49,25 +53,25 @@ let foods=["dosa","chapathy","salt-mango-tree","rice","water"];
 // console.log(food);
 
 
-// let check=foods.indexOf("salt-mango-tree")
-// console.log(check);
+let check=foods.indexOf("salt-mango-tree")
+console.log(check);
 
-// let checks=foods.lastIndexOf("salt-mango-tree");
-// console.log(checks);
+let checks=foods.lastIndexOf("salt-mango-tree");
+console.log(checks);
 
-// let exists = foods.includes("dosa")//Determines whether an array includes a certain element, returning true or false as appropriate.
-// console.log(exists);
-
-
-// let portion = foods.slice(0,3)//for extract a portion
-// console.log(portion);
+let exists = foods.includes("dosa")//Determines whether an array includes a certain element, returning true or false as appropriate.
+console.log(exists);
 
 
-//foods.splice(1,1);//index number of start deleting ,count of objects that need to delete 
+let portion = foods.slice(0,3)//for extract a portion
+console.log(portion);
+
+
+foods.splice(1,1);//index number of start deleting ,count of objects that need to delete 
+console.log(foods);
+
+
 //console.log(foods);
 
-
-//console.log(foods);
-
-//foods.splice(1,1,"coffee")//index number of start deleting ,delete count of object ,"we can add an object in the space that we deleted"
-//console.log(foods);
+foods.splice(1,1,"coffee")//index number of start deleting ,delete count of object ,"we can add an object in the space that we deleted"
+console.log(foods);
