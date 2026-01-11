@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>DOM getElementByTagName()</h2>
+    <ul>
+        <li>this is the first paragraph</li>
+        <li>this is the second paragraph</li>
+        <li>this is the third paragraph</li>
+    </ul>
+    <button onclick="btnClick()">Use Tag</button>
+
+    <script>
+       var tagsetting= document.getElementsByTagName("li")   
+       console.log(tagsetting);
+       console.log([...tagsetting]);
+       
+                        
+        function btnClick(){
+      var checking =tagsetting.map(items=>items.style.color="blue")          
+        }
+    </script>
+</body>
+</html>
+

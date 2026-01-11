@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1 id="head">DOM MANIPULATION</h1>
+
+    <ul>
+        <li class="cls">document.getElementById()</li>
+        <li>document.getElementsByClassName()</li>
+        <li class="cls">document.getElementsByTagName</li>
+        <li>document.querySelector()</li>
+        <li>document.querySelectorAll()</li>
+    </ul>
+
+    <button class="btn" onclick="btnClick()">Submit</button>
+
+
+    <script>
+       //* const documentId=document.getElementById("head")
+        // console.log(documentId);
+        //documentId.style.color="red"  for apply color for the specific id mentioned
+        //documentId.style.color="brown"
+        //access by className 
+        //*// const documentClass=document.getElementsByClassName("cls")
+        // console.log(documentClass);
+        
+        //* //convert html collection to an arraay
+        // console.log(Array.from(documentClass));
+
+        //*//changing its color
+        // console.log(Array.from(documentClass).map(item=>item.style.color="green"));
+        
+        const documentTagName=document.getElementsByTagName("li")
+        console.log(documentTagName);
+        
+        //converting html collections to array
+
+        // console.log(Array.from(documentTagName));
+
+        //or
+        console.log([...documentTagName]);
+        
+        console.log([...documentTagName].map(item=>item.style.color="blue"));
+        
+        
+        const query=document.querySelector("li")//only take the tags
+        console.log(query);
+
+
+         const queryId=document.querySelector("#head")//# for take the id
+        console.log(queryId);
+
+        
+
+        const queryAll=document.querySelectorAll("li")//takes tag and id ect.. can combine all
+        console.log(queryAll);
+
+          const queryClass=document.querySelectorAll(".cls")// .cls for take the class
+        console.log(queryClass);
+
+        const queryBtn=document.querySelector(".btn")
+        console.log(queryBtn);
+        
+
+        function btnClick(){
+            alert("button clicked")
+        }
+
+                
+    </script>
+</body>
+</html>

@@ -19,11 +19,7 @@ class Student{
         console.log(this.name,this.age,this.depart,this.fee);
         
     }
-    // setName(){
-    //     console.log(this.name);
-        
-    // }
-
+    
 }
 
 var aryaInstance=new Student()
@@ -31,9 +27,6 @@ var aryaInstance=new Student()
 aryaInstance.setStudent("Arya",18,"cs",1000)
 
 aryaInstance.displayStudent()
-
-// var aryaInstance=new Student()
-// aryaInstance.setName("Arya")
 
 var nandhuInstance =new Student()
 
