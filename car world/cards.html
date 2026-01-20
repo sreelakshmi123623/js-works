@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="h-screen">
+    <div class="flex gap-10 mt-30 ml-48">
+        <div class="h-80 w-100 bg-gray-200 rounded-md">
+            <div class="ml-10 pt-2">
+                <h4 class="text-md font-semibold">Car Name :</h4>
+                <input id="carbrand" class="w-60 p-1 shadow-md mt-2 border-1 border-gray-300" type="text"
+                    placeholder="car brand">
+                <h4 class="text-md font-semibold mt-4">Car Price :</h4>
+                <input id="price" class="w-60 p-1 shadow-md mt-2 border-1 border-gray-300" type="number"
+                    placeholder="price">
+                <h4 class="text-md font-semibold mt-4">Key :</h4>
+                <input id="carkey" class="w-60 p-1 shadow-md mt-2 border-1 border-gray-300" type="text"
+                    placeholder="key">
+
+                <div>
+                    <button onclick="storeClick()"
+                        class="bg-black p-2 text-white text-center mt-8 ml-30 rounded-sm hover:text-black hover:bg-white hover:border-1 hover:font-semibold">Store
+                        data</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="h-80 w-100 bg-gray-200 rounded-md">
+            <div class="ml-10  mt-10">
+                <h4 class="text-md font-semibold">Retrieve key :</h4>
+                <input  id="retrieve" class="w-60 p-1 shadow-md mt-2 border-1 border-gray-300" type="text"
+                    placeholder="Enter key to retrieve item">
+            </div>
+            <div>
+                <button onclick="retrieveClick()"
+                    class="bg-black p-2 text-white text-center mt-10 ml-30 rounded-sm hover:text-black hover:bg-white hover:border-1 hover:font-semibold">Retrieve
+                    Data</button>
+
+            </div>
+            <div id="result">
+
+            </div>
+        </div>
+        <div class="h-80 w-100 bg-gray-200 rounded-md">
+            <div class="ml-10 pt-2 mt-10">
+                <h4 class="text-md font-semibold">Remove Data :</h4>
+                <input id="removekey" class="w-60 p-1 shadow-md mt-2 border-1 border-gray-300" type="text"
+                    placeholder="Enter key to remove item">
+            </div>
+            <div>
+                <button onclick="RemoveData()" class="bg-black p-2 text-white text-center mt-10 ml-30 rounded-sm hover:text-black hover:bg-white hover:border-1 hover:font-semibold">Remove
+                    Data</button>
+
+            </div>
+        </div>
+
+    </div>
+    <button onclick="clearClick()"
+        class="bg-black w-250 mt-40 ml-80 p-3 text-white text-center shadow-md mt-10 ml-30 rounded-sm hover:text-black hover:bg-white hover:border-1 hover:font-semibold">Clear
+        All Records</button>
+
+
+</body>
+<script>
+    function clearClick() {
+        localStorage.clear()
+    }
+
+    function RemoveData(){
+        let removing=removekey.value
+        if(localStorage.getItem(removing)){
+            localStorage.removeItem(removing)
+            alert("Record deleted successfully")
+
+        }
+        else{
+            alert("No records found on this id")
+        }
+    }
+
+    function storeClick() {
+        cardetails = {
+            id: carkey.value,
+            brand: carbrand.value,
+            price: price.value
+        }
+        if (localStorage.getItem(cardetails.id)) {
+            alert("Car details already exists")
+        }
+        else {
+            localStorage.setItem(cardetails.id, JSON.stringify(cardetails))
+            alert("Car details added successfully")
+            carbrand.value = ""
+            price.value = ""
+            carkey.value = ""
+        }
+    }
+
+
+    function retrieveClick() {
+        let key = retrieve.value
+        let cardetails = JSON.parse(localStorage.getItem(key))
+
+        if(!cardetails){
+
+            alert("Id is not recorded")
+        }
+
+        result.innerHTML = `<div class="w-screen h-70 bg-white max-w-sm p-4 sm:p-6 bg-neutral-primary-soft border border-1 rounded-md shadow-xs">
+    <h5 class="mb-2 text-base md:text-xl font-semibold text-heading">Car Details</h5>
+    <ul class="my-6 space-y-3">
+        <li>
+            <a href="#" class="flex items-center p-3 text-lg font-semibold text-heading rounded-base bg-neutral-secondary-medium hover:bg-neutral-tertiary-medium group">
+                <span class="flex-1 ms-3 whitespace-nowrap">brand : ${cardetails.brand}</span>
+        
+                </a>
+        </li>
+        <li>
+            <a href="#" class="flex items-center p-3 text-lg font-semibold text-heading rounded-base bg-neutral-secondary-medium hover:bg-neutral-tertiary-medium group">
+                <span class="flex-1 ms-3 whitespace-nowrap">price : ${cardetails.price}
+</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="flex items-center p-3 text-lg font-semibold text-heading rounded-base bg-neutral-secondary-medium hover:bg-neutral-tertiary-medium group">
+                <span class="flex-1 ms-3 whitespace-nowrap">id : ${cardetails.id}
+</span>
+            </a>
+        </li>
+      
+    </ul>
+</div>
+       
+
+        `
+    }
+</script>
+
+</html>

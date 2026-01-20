@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="h-screen flex justify-center mt-50">
+    <div class="h-210 w-210 bg-black rounded-md">
+        <div>
+            <textarea id="result" type="text" class="w-180 ml-15 h-23 mt-3 rounded-md bg-gray-300 text-black text-2xl">
+                </textarea>
+
+        </div>
+        <div><button onclick="keyClick(1)" class="bg-gray-300 mr-5 ml-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">1</button>
+            <button onclick="keyClick(2)" class="bg-gray-300 mr-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">2</button>
+            <button onclick="keyClick(3)" class="bg-gray-300 mr-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">3</button>
+            <button onclick="keyClick(4)" class="bg-gray-300 mr-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">4</button>
+            <button onclick="keyClick(5)" class="bg-gray-300 mr-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">5</button>
+            <button onclick="keyClick(6)" class="bg-gray-300 mr-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">6</button>
+            <button onclick="keyClick(7)" class="bg-gray-300 mr-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">7</button>
+            <button onclick="keyClick(8)" class="bg-gray-300 mr-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">8</button>
+            <button onclick="keyClick(9)" class="bg-gray-300 mr-5 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">9</button>
+        </div>
+        <div> 
+            <button onclick="keyClick(0)" class="bg-gray-300 ml-5 mt-3 p-4 rounded-md w-150 text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">0</button>
+            <button onclick="backSpace()" class="w-40 h-17 rounded-md bg-gray-700 p-3 text-white font-md ml-1 text-2xl hover:bg-black hover:text-white hover:border-white hover:border-1">Backspace</button>
+        </div>
+        <div>
+            <button onclick="keyClick('-')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md ml-5 text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">-</button>
+            <button onclick="keyClick('+')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">+</button>
+            <button onclick="keyClick('!')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">!</button>
+            <button onclick="keyClick('@')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">@</button>
+            <button onclick="keyClick('#')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">#</button>
+            <button onclick="keyClick('$')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">$</button>
+            <button onclick="keyClick('%')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">%</button>
+            <button onclick="keyClick('^')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">^</button>
+            <button onclick="keyClick('&')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">&</button>
+        </div>
+        <div>
+            <button class=" bg-gray-300 ml-5 mt-3 p-3 rounded-md w-195 text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">*</button>
+        </div>
+        <div>
+            <button onclick="capsClick()" class="bg-gray-700 mr-4 mt-3 p-4 pr-12 pl-12 rounded-md ml-5 text-white text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">Caps</button>
+            <button onclick="keyClick('q')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">Q</button>
+            <button onclick="keyClick('w')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">W</button>
+            <button onclick="keyClick('e')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">E</button>
+            <button onclick="keyClick('r')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">R</button>
+            <button onclick="keyClick('t')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">T</button>
+            <button onclick="keyClick('y')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">Y</button>
+            <button onclick="keyClick('u')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">U</button>
+
+
+        </div>
+        <div>
+            <button onclick="keyClick('p')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 ml-5 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">P</button>
+            <button onclick="keyClick('o')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">O</button>
+            <button onclick="keyClick('l')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">L</button>
+            <button onclick="enterClick()" class="bg-gray-700 mt-3 ml-3 p-4 pr-53 pl-53 rounded-md ml-5 text-white text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">Enter</button>
+        </div>
+        <div>
+            <button onclick="keyClick('a')" class="bg-gray-300 ml-5 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">A</button>
+            <button onclick="keyClick('s')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">S</button>
+            <button onclick="keyClick('d')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">D</button>
+            <button onclick="keyClick('f')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">F</button>
+            <button onclick="keyClick('g')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">g</button>
+            <button onclick="keyClick('h')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">H</button>
+            <button onclick="keyClick('j')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">J</button>
+            <button onclick="keyClick('k')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">K</button>
+            <button onclick="keyClick('l')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">I</button>
+
+        </div>
+        <div>
+            <button onclick="keyClick('z')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md ml-5 text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">Z</button>
+            <button onclick="keyClick('x')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">X</button>
+            <button onclick="keyClick('c')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">C</button>
+            <button onclick="keyClick('v')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">V</button>
+            <button onclick="keyClick('b')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">B</button>
+            <button onclick="keyClick('n')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">N</button>
+            <button onclick="keyClick('m')" class="bg-gray-300 mr-4 mt-3 p-4 pr-6 pl-6 rounded-md text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">M</button>
+            <button onclick="spaceClick()" class="bg-gray-700 mr-4 mt-3 p-4 pr-10 pl-10 rounded-md ml-5 text-white text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">Space</button>
+        </div>
+        <div>
+        <button onclick="allClear()" class="bg-gray-700 ml-80 mr-4 mt-3 p-4 pr-10 pl-10 rounded-md ml-5 text-white text-3xl hover:bg-black hover:border-white hover:border-1 hover:text-white ">Clear Text</button>
+
+        </div>
+    </div>
+
+</body>
+<script src="key.js"></script>
+</html>

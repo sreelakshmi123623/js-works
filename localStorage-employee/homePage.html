@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="h-screen bg-blue-100">
+    <div class="flex justify-between">
+        <div id="head1" class="text-black text-3xl font-semibold ml-5 mt-5">WELCOME user</div>
+        <button onclick="logOut()"
+            class="text-white bg-blue-500 p-3 rounded-md hover:bg-white hover:text-black hover:border-1 mt-5 mr-5">LOGOUT</button>
+    </div>
+    <div class="text-center">
+        <h2 class="text-3xl text-black mb-5 font-semibold">Employee Details</h2>
+        <div class="flex"> <input type="text" id="empid" class="w-150 h-10 border-1 bg-white rounded-md mt-8 ml-90 pl-2"
+                placeholder="Employee Id">
+            <input id="searchId" type="text" class="w-100 h-10 border-1 bg-white rounded-md mt-8 ml-10 pl-2" placeholder="Search Id">
+        </div>
+        <div>
+            <input type="text" id="empnam" class="w-150 h-10 border-1 bg-white rounded-md mt-8 mr-76 pl-2"
+                placeholder="Employee Name">
+            <button onclick="searchClick()" class="text-white bg-blue-500 p-2 rounded-md hover:bg-white hover:text-black hover:border-1">Submit</button>
+                <div id="result">
+
+                </div>
+        </div>
+        <div>
+            <input type="text" id="empaddre" class="w-150 h-10 border-1 bg-white rounded-md mt-8 mr-94 pl-2"
+                placeholder="Employee Address">
+            <input type="text" id="empdesi" class="w-150 h-10 border-1 bg-white rounded-md mt-8 mr-94 pl-2"
+                placeholder="Employee Designation">
+
+            <input type="text" id="empexp" class="w-150 h-10 border-1 bg-white rounded-md mt-8 mr-94 pl-2"
+                placeholder="Employee Experience">
+
+            <input type="text" id="empsal" class="w-150 h-10 border-1 bg-white rounded-md mt-8 mr-94 pl-2"
+                placeholder="Employee Salary">
+
+        </div>
+        <button onclick="addEmp()" class="bg-blue-500 text-white hover:text-black hover:bg-white hover:border-1 p-3 rounded-md mt-10 mr-95">Add Employee</button>
+    </div>
+
+</body>
+<script src="homePage.js"></script>
+
+</html>

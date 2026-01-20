@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!--1.parentNode: returns the parent node of an element -->
+
+<div id="parent">
+    <div id="child">parent</div>
+</div>
+
+<!-- 2.childNodes: return the node list of an element -->
+    <ul id="divelement">
+        <li>child</li>
+        <li>child</li>
+        <li>child</li>
+        <li>child</li>
+    </ul>
+
+<!-- 3.innerHtml: sets a content to html dom -->
+
+<div id="elmt">
+    <p>web developer</p>
+</div>
+
+
+<!-- 4.textContent: sets a text content to html dom //can only  do to a particular text content -->
+ <div id="text">
+    <h2>web Developer</h2>
+ </div>
+
+
+
+
+    <!-- javascript code -->
+
+<script>
+    // 1
+    const childElement=document.getElementById("child")
+    console.log(childElement);
+    const parentElement=childElement.parentNode
+    console.log(parentElement);
+    // 2
+    const divelements=document.getElementById("divelement")
+    console.log(divelements);
+   const divChilds=divelements.childNodes
+   console.log(divChilds);
+   
+    //3
+    const innertext=document.getElementById("elmt")
+    console.log(innertext);
+    innertext.innerHTML='<h2 style="color:purple">Luminar Technolab</h2>'//p tage content transferes to h2
+    
+    //4
+    const texts=document.getElementById("text")
+    console.log(texts);
+    texts.textContent="MEARN STACK WEB DEVELOPER"
+    
+
+        
+</script>
+</body>
+</html>

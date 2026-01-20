@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="h-screen bg-blue-200 flex justify-center ">
+    <div class="h-[350px] w-[600px] bg-white mt-20 rounded-sm border-1">
+        <h1 class="text-3xl font-semibold text-center mt-10 text-blue-900">Age Checker</h1>
+
+        <input id="ageNumber" class="w-120 h-10 border-1 rounded-md mt-13 pl-4 ml-15" type="text" placeholder="Enter your age">
+        <div> <button onclick="btnClick()" class="bg-blue-500 w-20 ml-65 mt-10 text-white hover:text-black rounded-md h-10 hover:bg-white hover:border-1">Click</button>
+        </div>
+        <div class="result text-green-600 text-md mt-10 text-center"></div>
+    </div>
+    <script>
+        function btnClick(){
+            var ageFetch=document.getElementById("ageNumber").value
+            var result=document.querySelector(".result")
+            if(ageFetch>=18){
+            result.innerHTML= "Eligible"
+            }
+                else{
+                    result.innerHTML="Not Eligible"
+
+                }
+                
+          
+        }
+    </script>
+
+</body>
+</html>
