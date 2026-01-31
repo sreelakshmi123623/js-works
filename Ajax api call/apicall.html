@@ -25,16 +25,16 @@
         </tbody>
     </table>
     <script>
-        //AJAX API call
+        //AJAX API call process
 
         //1.create a new htmlxmlrequest object
-        const response=new XMLHttpRequest()
+        const response=new XMLHttpRequest()//XMLHttpRequest() is predefined
 
         //2.connect to api call
         response.open("get","https://jsonplaceholder.typicode.com/todos")//state-1
 
         //3.send
-        response.send()
+        response.send()//state-2
 
         //4.set OnreadystateChange
         response.onreadystatechange=()=>{
@@ -54,10 +54,10 @@
             for(let todo of todoArray){
                 
                 htmlData=` <tr>
-            <th class="border-1 border-black p-3">${todo.userId}</th>
-            <th class="border-1 border-black p-3">${todo.id}</th>
-            <th class="border-1 border-black p-3">${todo.title}</th>
-            <th class="border-1 border-black p-3">${todo.completed}</th>
+            <td class="border-1 border-black p-3">${todo.userId}</td>
+            <td class="border-1 border-black p-3">${todo.id}</td>
+            <td class="border-1 border-black p-3">${todo.title}</td>
+            <td class="border-1 border-black p-3">${todo.completed}</td>
         </tr>`
         result.innerHTML+=htmlData
             }

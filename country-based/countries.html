@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="min-h-screen ml-140">
+    <div class="w-100 h-80 bg-gray-200 rounded-md mt-20 text-center">
+        <div>
+            <input id="countryname" class="bg-white w-70 h-10 rounded-md pl-5 mt-15" type="text"
+                placeholder="country name">
+
+        </div> <button onclick="btnClick()"
+            class="w-20 h-10 bg-blue-600 border-1 text-white rounded-md mt-10 hover:text-black hover:bg-white ">Submit</button>
+    </div>
+    <div id="page"></div>
+
+
+    <script>
+        function btnClick() {
+            let entercountry = countryname.value
+            fetch(`https://restcountries.com/v3.1/name/${entercountry}?fullText=true`)
+                .then(data => (data.json()))
+                .then(country => checking(country))
+                .catch(error=>{(alert("faild the process"))})
+            // console.log(entercountry);
+
+            function checking(country) {
+                for (let name of country) {
+
+                    page.innerHTML += `
+                <div class="w-80">${name.flags}</div>
+            
+                
+                `
+                }
+            }
+
+
+            // console.log(data);
+        }
+    </script>
+</body>
+
+</html>
+    <!-- <div>${name.flags}</div>
+                <div>${name.flags}</div>
+                <div>${name.flags}</div>
+                <div>${name.flags}</div> -->

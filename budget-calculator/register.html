@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="h-screen  mt-10 bg-blue-50">
+    <div class=" flex gap-3 ml-170 mb-30">
+        <h1 class="text-4xl mt-20 text-blue-800 ">Register</h1>
+        <h1 class="text-2xl font-semibold mt-20 text-black ">Now</h1>
+
+    </div>
+    <div class="flex justify-center gap-10">
+        <div>
+            <img class="w-100 h-100 mt-5 rounded-lg" src="./image/budgetcalcu.jpg" alt="">
+
+        </div>
+        <div>
+            <div class="w-200 h-110 bg-blue-200 rounded-md bg-no-repeat bg-cover bg-center">
+                <h4 class="text-3xl text-center text-black font-semibold pt-5">Register</h4>
+                <div> <input id="usern"
+                        class="bg-white pl-4 pt-2 pb-2 pr-10 shadow-lg w-150 shadow-gray-900/50 inset-shadow-sm p-1 rounded-md mt-12 ml-20 text-md"
+                        type="text" placeholder="Username"></div>
+                <div> <input id="email"
+                        class="bg-white pl-4 pt-2 pb-2 pr-10 shadow-lg w-150  shadow-gray-900/50 inset-shadow-sm p-1 rounded-md mt-12 ml-20 text-md"
+                        type="email" placeholder="email"></div>
+                <div>
+                    <input id="pass"
+                        class="bg-white pl-4 pt-2 pb-2 pr-10 shadow-lg w-150  shadow-gray-900/50 inset-shadow-sm p-1 rounded-md mt-12 ml-20 text-md"
+                        type="text" placeholder="Password ">
+
+                </div> <button onclick="registerbtn()"
+                    class="text-md ml-90 mt-10 bg-white rounded-md p-2 text-black hover:text-black hover:bg-blue-200 hover:border-1 hover:border-black">Register</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function registerbtn() {
+            userdetails = {
+                usern: usern.value,
+                email: email.value,
+                pass: pass.value,
+                balance:0,
+                income:[],
+                expense:[]
+            }
+            if (usern.value === "" || email.value === "" || pass.value === "") {
+                alert("please fill all fields")
+                return;
+            }
+            else if (localStorage.getItem(userdetails.usern)) {
+                alert("Account exists")
+                window.location.href = "login.html"
+            }
+            else {
+                localStorage.setItem(userdetails.usern, JSON.stringify(userdetails))
+                usern.value = ""
+                email.value = ""
+                pass.value = ""
+                alert("Successfully Registered")
+                window.location.href = "login.html"
+            }
+        }
+
+    </script>
+</body>
+
+</html>

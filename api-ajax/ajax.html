@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body>
+    <table class="border-3 mt-10">
+  <thead>
+        <tr>
+            <th class="border-1 border-black p-3">id</th>
+            <th class="border-1 border-black p-3">name</th>
+            <th class="border-1 border-black p-3">username</th>
+            <th class="border-1 border-black p-3">email</th>
+            <th class="border-1 border-black p-3">address</th>
+
+        </tr>
+        </thead>
+        
+  <tbody id="result">
+ 
+  </tbody>
+</table>
+
+<script>
+    const response= new XMLHttpRequest()
+
+    response.open("get","https://jsonplaceholder.typicode.com/users")
+    response.send()
+
+    response.onreadystatechange=()=>{
+
+        if(response.readyState==4){
+            if(response.status>=200 && response.status<=201){
+                const tableuser=JSON.parse(response.responseText)
+                displaytable(tableuser)
+            }
+        }
+    }
+        function displaytable(tableuser){
+            let result=document.getElementById("result")
+            for(let list of tableuser){
+                documentt=` <tbody id="result">
+ 
+                    <tr>
+            <td class="border-1 border-black p-3">${list.id}</td>
+            <td class="border-1 border-black p-3">${list.name}</td>
+            <td class="border-1 border-black p-3">${list.username}</td>
+            <td class="border-1 border-black p-3">${list.email}</td>
+            <td class="border-1 border-black p-3">${list.address.street}</td>
+
+
+        </tr>
+         </tbody>`
+        result.innerHTML+=documentt
+    
+            }
+        }
+    
+</script>
+</body>
+</html>

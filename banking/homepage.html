@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="min-h-screen  bg-center bg-no-repeat bg-cover"
+    style="background-image: url(image/avery-evans-RJQE64NmC_o-unsplash.jpg);">
+    <div class="w-[100%] h-30 mt-5 flex justify-between">
+        <div class="ml-5 text-xl text-white font-medium">Bank</div>
+        <div class="flex text-white gap-8 mr-4">
+            <h2>Help |</h2>
+            <h2>contact |</h2>
+            <h2>Settings |</h2>
+            <h2">Privacy policy |</h2>
+                <a href="login.html"> <button class="ml-10 bg-blue-300 rounded-lg p-2 ">Logout</button>
+                </a>
+        </div>
+    </div>
+    <div class="flex gap-10 grids grid-cols-2 mt-100 mb-20">
+        <div class="w-[50%] h-100 bg-black rounded-md ml-10 mt-20 bg-no-repeat bg-center bg-cover"
+            style="background-image: url(image/cardmapr-nl-s8F8yglbpjo-unsplash.jpg);">
+            <h2 class="text-center text-3xl text-white mt-3 font-medium">Deposit</h2>
+            <div>
+                <input id="amountdep" class="w-180 bg-white mt-10 p-2 ml-10 rounded-md" type="text"
+                    placeholder="Enter your amount">
+
+            </div>
+            <div> <input id="accnumber" class="w-180 bg-white mt-10 p-2 ml-10 rounded-md" type="text"
+                    placeholder="Enter your account number">
+            </div>
+            <div id="deposit" class="text-white ml-40 mt-10 text-xl">
+              
+            </div>
+            <button onclick="depositbtn()"
+                class="text-md ml-100 mt-15 bg-white rounded-md p-2 text-black hover:text-white hover:bg-black hover:border-1">Submit</button>
+        </div>
+        <div class="w-[50%] h-100 bg-gray-500 rounded-md mt-20  mr-10 bg-no-repeat bg-center bg-cover"
+            style="background-image: url(image/cardmapr-nl-s8F8yglbpjo-unsplash.jpg);">
+            <h2 class="text-center text-3xl text-white mt-3 font-medium">Withdraw</h2>
+            <div>
+                <input id="withdamt" class="w-180 bg-white mt-10 p-2 ml-10 rounded-md" type="text"
+                    placeholder="Enter your amount">
+
+            </div>
+            <div> <input id="withdaccn" class="w-180 bg-white mt-10 p-2 ml-10 rounded-md" type="text"
+                    placeholder="Enter your account number">
+            </div>
+            <div id="withdrawel" class="text-white ml-40 mt-10 text-xl">
+               
+            </div>
+            <button onclick="withdrawbtn()"
+                class="text-md ml-100 mt-15 bg-white rounded-md p-2 text-black hover:text-white hover:bg-black hover:border-1">Submit</button>
+        </div>
+    </div>
+    </div>
+    <script>
+        function depositbtn() {
+            let accnumberr = document.getElementById("accnumber").value
+            let taking = JSON.parse(localStorage.getItem(accnumberr))
+            let fetchh = Number(document.getElementById("amountdep").value)
+            if (!taking) {
+                alert("Account doesnt exists")
+                return;
+            }
+
+            taking.balance = Number(taking.balance) + fetchh
+
+            localStorage.setItem(accnumberr, JSON.stringify(taking))
+            document.getElementById("deposit").innerHTML = `Amount ${fetchh} is stored, account balance is ${taking.balance}`
+            alert("Amount is deposited successfuly")
+
+
+
+
+        }
+
+        function withdrawbtn() {
+            let wamount = Number(document.getElementById("withdamt").value)
+
+            let acctaking = document.getElementById("withdaccn").value
+            let acctakingg = JSON.parse(localStorage.getItem(acctaking))
+
+            if (!acctakingg) {
+                alert("account doesnt exists")
+            }
+            acctakingg.balance = Number(acctakingg.balance) - wamount
+
+            localStorage.setItem(acctaking, JSON.stringify(acctakingg))
+            document.getElementById("withdrawel").innerHTML = `Amount ${wamount} is withdrawing, account balance is ${acctakingg.balance}`
+            alert("Amount withdrawed successfuly")
+
+        }
+    </script>
+</body>
+
+</html>

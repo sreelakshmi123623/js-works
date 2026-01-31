@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="min-h-screen">
+        <div class="flex justify-between mt-10 ml-5 mr-5">
+        <div class="text-4xl text-black font-semibold"> <i class="fa-solid fa-user fa-flip text-3xl mr-3"
+            style="--fa-animation-duration: 3s "></i><span id="currentuser"></span></div>
+            <button onclick="clearAll()" class="ml-300 text-white text-md p-2 bg-cyan-600 hover:border-1 rounded-lg">Clear All</button>
+        <a href="./login.html"><button
+            class="text-white text-md p-2 bg-blue-300 hover:border-1 rounded-lg">Logout</button></a>
+        </div>
+    <div class="flex ml-180">
+        <h2 class="text-7xl text-black font-semibold mt-5">T</h2>
+        <h4 class="text-4xl font-bold text-blue-800 mt-10">RacKer</h4>
+    </div>
+    <div class="flex justify-between ml-85 mt-20 mr-85">
+        <div class="w-80 h-50 bg-rose-200 rounded-lg p-1">
+            <h1 class="text-center text-2xl font-semibold mt-10">Total Balance</h1>
+            <h2 id="incomespace" class="text-center text-2xl font-semibold mt-6 wrap-break-word"></h2>
+        </div>
+        <div class="w-80 h-50 bg-sky-200 rounded-lg p-1">
+            <h1 class="text-center text-2xl font-semibold mt-10">Total Expense</h1>
+            <h2 id="expensespace" class="text-center text-2xl font-semibold mt-6 wrap-break-word"></h2>
+        </div>
+    </div>
+    <div class="flex">
+        <div>
+            <h2 class="text-2xl font-bold text-rose-400 ml-110 mt-20">Add Income</h2>
+           <input id="incometype" class="ml-80 bg-rose-50 w-100 pl-5 p-1 mt-5 rounded-md" type="text" placeholder="Enter Income Type">
+            <div><input id="incomerp" class="ml-80 bg-rose-50 w-100 pl-5 p-1 mt-5 rounded-md" type="text" placeholder="Enter Amount"></div>
+            <button onclick="incomeaddbtn()" class="ml-80 w-100 bg-green-200 p-1 mt-10 rounded-sm font-semibold hover:border-1 hover:border-gray-400">Add Income</button>
+        </div>
+        <div>
+            <h2 class="text-2xl font-bold text-sky-300 ml-100 mt-20">Add Expense</h2>
+           <input id="expensetype" class="ml-70 bg-sky-50 w-100 pl-5 p-1 mt-5 rounded-md" type="text" placeholder="Enter Expense Type">
+            <div> <input id="expenseamt" class="ml-70 bg-sky-50 w-100 pl-5 p-1 mt-5 rounded-md" type="text" placeholder="Enter Amount"></div>
+            <button onclick="expenseaddbtn()" class="ml-70 w-100 bg-green-200 p-1 mt-10 rounded-sm font-semibold hover:border-1 hover:border-gray-400">Add Expense</button>
+        </div>
+    </div>
+    <div>
+        <h1 class="text-center mt-30 text-4xl font-semibold text-blue-900">Income And Expense Details</h1>
+        <div class="flex justify-evenly mt-15">
+            <div>
+                <h4 class="text-center mt-5 mb-10 text-3xl text-black font-bold">Income Details</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="pr-15">Type</th>
+                            <th class="pr-15">Amount</th>
+                            <th class="pr-15">Balance</th>
+                            <th class="pr-15">Date&Time</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody id="incomeTableBody">
+                    </tbody>
+                    <!-- <tbody> -->
+                         <!-- <tbody>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tbody> -->
+                        <!-- <tr>
+                            <td class="pr-15">4r54</td>
+                            <td class="pr-15">cfxgvcdn</td>
+                            <td class="pr-15">cfxgvcdn</td>
+                            <td class="pr-15">cfxgvcdn</td>
+                        </tr>
+                    </tbody> -->
+                </table>
+            </div>
+            <div>
+                <h4 class="text-center mt-5 mb-10 text-3xl text-black font-bold">Expense Details</h4>
+            <table>
+                    <thead>
+                        <tr>
+                            <th class="pr-15">Type</th>
+                            <th class="pr-15">Amount</th>
+                            <th class="pr-15">Balance</th>
+                            <th class="pr-15">Date&Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expenseTableBody">
+                    </tbody>
+                    <!-- <tbody>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tbody> -->
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+
+const currentuser = document.getElementById("currentuser");
+const gettingcurrentuser = localStorage.getItem("currentuser");
+currentuser.innerHTML = `Welcome ${gettingcurrentuser || "User"}`;
+
+// Initialize totals from localStorage
+let totalIncome = Number(localStorage.getItem("totalIncome") || 0);
+let totalExpense = Number(localStorage.getItem("totalExpense") || 0);
+let balance = Number(localStorage.getItem("balance") || 0);
+
+// Update totals display
+document.getElementById("incomespace").innerText = `$${balance}`;
+document.getElementById("expensespace").innerText = `$${totalExpense}`;
+
+// Add Income
+function incomeaddbtn() {
+    const incometype = document.getElementById("incometype").value.trim();
+    const incomerp = document.getElementById("incomerp").value.trim();
+    const amount = Number(incomerp);
+
+    if (!incometype || !incomerp || isNaN(amount) || !Number.isInteger(amount)) {
+        alert("Enter a valid income type and a whole number amount!");
+        return;
+    }
+
+    totalIncome += amount;
+    balance += amount;
+
+    // Save to localStorage
+    localStorage.setItem("totalIncome", totalIncome);
+    localStorage.setItem("balance", balance);
+
+    // Update display
+    document.getElementById("incomespace").innerText = `$${balance}`;
+
+    // Add row to Income table
+    const incometablebody = document.getElementById("incomeTableBody");
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+        <td class="pr-15">${incometype}</td>
+        <td class="pr-15">$${amount}</td>
+        <td class="pr-15">$${balance}</td>
+        <td class="pr-15">${new Date().toLocaleString()}</td>
+    `;
+    incometablebody.appendChild(newRow);
+
+    // Clear inputs
+    document.getElementById("incometype").value = "";
+    document.getElementById("incomerp").value = "";
+    localStorage.setItem(`${currentUser}_totalIncome`, totalIncome);
+localStorage.setItem(`${currentUser}_balance`, balance);
+}
+
+// Add Expense
+function expenseaddbtn() {
+    const expensetype = document.getElementById("expensetype").value.trim();
+    const expenseamt = document.getElementById("expenseamt").value.trim();
+    const amount = Number(expenseamt);
+
+    if (!expensetype || !expenseamt || isNaN(amount) || !Number.isInteger(amount)) {
+        alert("Enter a valid expense type and a whole number amount!");
+        return;
+    }
+
+    totalExpense += amount;
+    balance -= amount;
+
+    // Save to localStorage
+    localStorage.setItem("totalExpense", totalExpense);
+    localStorage.setItem("balance", balance);
+
+    // Update display
+    document.getElementById("expensespace").innerText = `$${totalExpense}`;
+    document.getElementById("incomespace").innerText = `$${balance}`;
+
+    // Add row to Expense table
+    const expensetablebody = document.getElementById("expenseTableBody");
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+        <td class="pr-15">${expensetype}</td>
+        <td class="pr-15">$${amount}</td>
+        <td class="pr-15">$${balance}</td>
+        <td class="pr-15">${new Date().toLocaleString()}</td>
+    `;
+    expensetablebody.appendChild(newRow);
+
+    // Clear inputs
+    document.getElementById("expensetype").value = "";
+    document.getElementById("expenseamt").value = "";
+    localStorage.setItem(`${currentUser}_totalExpense`, totalExpense);
+localStorage.setItem(`${currentUser}_balance`, balance);
+
+}
+
+function clearAll() {
+    if (confirm("Are you sure you want to clear all records?")) {
+        totalIncome = 0;
+        totalExpense = 0;
+        balance = 0;
+
+        localStorage.setItem("totalIncome", 0);
+        localStorage.setItem("totalExpense", 0);
+        localStorage.setItem("balance", 0);
+            localStorage.setItem(`${currentUser}_incomeTable`, "");
+        localStorage.setItem(`${currentUser}_expenseTable`, "");
+
+        document.getElementById("incomespace").innerText = "$0";
+        document.getElementById("expensespace").innerText = "$0";
+        document.getElementById("incomeTableBody").innerHTML = "";
+        document.getElementById("expenseTableBody").innerHTML = "";
+    }
+}
+</script>
+
+       
+</body>
+
+</html>

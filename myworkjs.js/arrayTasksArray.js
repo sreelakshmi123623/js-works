@@ -18,3 +18,7 @@ console.log(checking);
 
 let largest=words.reduce((w1,w2)=>w1.length>w2.length?w1:w2)
 console.log(largest);
+
+
+let checkingg=words.map(w=>w.length)
+console.log(checkingg);

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+            <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body class="h-screen mt-40 bg-gray-100 ">
+   <div class="flex justify-center gap-10">
+        <div>
+            <img class="w-100 h-100 rounded-full border-2 border-blue-200" src="./image/gudgetcalcu2.jpg" alt="">
+        </div>
+       <div>
+            <div class="w-200 h-100 bg-blue-200 rounded-lg bg-no-repeat bg-cover bg-center"
+             >
+                <h4 class="text-3xl text-center text-blue-800 font-semibold pt-5">Login</h4>
+        
+                <div> <input id="loginusern"
+                        class="bg-white  w-150 pl-4 pt-2 pb-2 pr-10 shadow-lg shadow-gray-900/50 inset-shadow-sm p-1 rounded-md mt-12 ml-20 text-md"
+                        type="text" placeholder="Username"></div>
+                <div>
+                    <input id="loginpass"
+                        class="bg-white  w-150 pl-4 pt-2 pb-2 pr-10 shadow-lg shadow-gray-900/50 inset-shadow-sm p-1 rounded-md mt-12 ml-20 text-md"
+                        type="text" placeholder="password">
+        
+                </div> <button onclick="loginbtn()"
+                    class="text-md ml-100 mt-18 bg-white rounded-md p-2 text-black hover:text-black hover:bg-blue-200 hover:border-1 hover:border-black ">Login</button>
+                <div class="flex ml-80 mt-6">
+                    <p class="text-blue-800 underline hover:no-underline">Forgot Password </p>
+                    <p class="pl-2 pr-2">|</p>
+                    <a href="./register.html">
+                        <p class="text-blue-800 underline hover:no-underline">Register now</p>
+                    </a>
+                </div>
+            </div>
+       </div>
+        
+   </div>
+   <script>
+    function loginbtn(){
+        const loginusern=document.getElementById("loginusern").value
+        const loginpass=document.getElementById("loginpass").value
+
+        let gettingdetails=JSON.parse(localStorage.getItem(loginusern))
+
+       if(loginusern==="" || loginpass===""){
+            alert("please fill all fields")
+            return;
+        }
+        else  if(!gettingdetails){
+            alert("Account is not registered")
+            window.location.href="register.html"
+            return;
+        }
+       
+        else if(gettingdetails.pass!==loginpass){
+            alert("Invalid password")
+            return;
+        }
+        else{
+            localStorage.setItem("currentuser",loginusern)
+            alert("Successfully Login")
+            window.location.href="homepage.html"
+        }
+        }
+    
+   </script>
+</body>
+</html>

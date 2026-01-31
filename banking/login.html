@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+</head>
+
+<body class="h-screen flex justify-center mt-40 bg-blue-50">
+    <div class="w-100 h-100 bg-gray-400 rounded-md bg-no-repeat bg-cover bg-center"
+        style="background-image: url(image/avery-evans-RJQE64NmC_o-unsplash.jpg);">
+        <h4 class="text-3xl text-center text-white font-semibold pt-5">Login</h4>
+
+        <div> <input id="loginpasww"
+                class="bg-white pl-4 pt-2 pb-2 pr-10 shadow-lg shadow-gray-900/50 inset-shadow-sm p-1 rounded-md mt-12 ml-20 text-md"
+                type="text" placeholder="Password"></div>
+        <div>
+            <input id="loginaccno"
+                class="bg-white pl-4 pt-2 pb-2 pr-10 shadow-lg shadow-gray-900/50 inset-shadow-sm p-1 rounded-md mt-12 ml-20 text-md"
+                type="text" placeholder="Account number">
+
+        </div> <button onclick="loginbtn()"
+            class="text-md ml-40 mt-18 bg-white rounded-md p-2 text-black hover:text-white hover:bg-gray-400 hover:border-1 ">Login</button>
+        <div class="flex ml-15 mt-6">
+            <p class="text-blue-800 underline hover:no-underline">Forgot Password </p>
+            <p class="pl-2 pr-2">|</p>
+            <a href="./register.html">
+                <p class="text-blue-800 underline hover:no-underline">Register now</p>
+            </a>
+        </div>
+    </div>
+    <script>
+        function loginbtn() {
+
+            let enteredpass = document.getElementById("loginpasww").value
+            let enteredaccno = document.getElementById("loginaccno").value
+
+            let fetchingentereddetails = JSON.parse(localStorage.getItem(enteredaccno))
+            if(enteredpass==="" || enteredaccno===""){
+                alert("please fill all fields")
+                return;
+            }
+
+            if (!fetchingentereddetails) {
+                alert("No user registered")
+                return;
+
+            }
+            else if (enteredpass===fetchingentereddetails.pasw && enteredaccno===fetchingentereddetails.accno) {
+                alert("Successfuly login")
+                window.location.href = "homepage.html"
+            }
+            else {
+                alert("Invalid Account number Or password")
+            }
+        }
+
+    </script>
+</body>
+
+</html>
