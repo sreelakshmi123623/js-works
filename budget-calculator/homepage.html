@@ -16,9 +16,8 @@
         <div class="flex justify-between mt-10 ml-5 mr-5">
         <div class="text-4xl text-black font-semibold"> <i class="fa-solid fa-user fa-flip text-3xl mr-3"
             style="--fa-animation-duration: 3s "></i><span id="currentuser"></span></div>
-            <button onclick="clearAll()" class="ml-300 text-white text-md p-2 bg-cyan-600 hover:border-1 rounded-lg">Clear All</button>
-        <a href="./login.html"><button
-            class="text-white text-md p-2 bg-blue-300 hover:border-1 rounded-lg">Logout</button></a>
+            <button onclick="clearAll()" class="ml-250 text-white text-md p-2 bg-cyan-600 hover:border-1 rounded-lg">Clear All</button>
+       <button onclick="logoutbtn()" class="text-white text-md p-2 bg-blue-300 hover:border-1 rounded-lg">Logout</button>
         </div>
     <div class="flex ml-180">
         <h2 class="text-7xl text-black font-semibold mt-5">T</h2>
@@ -112,7 +111,17 @@
 
 const currentuser = document.getElementById("currentuser");
 const gettingcurrentuser = localStorage.getItem("currentuser");
-currentuser.innerHTML = `Welcome ${gettingcurrentuser || "User"}`;
+currentuser.innerHTML =`Welcome ${gettingcurrentuser || "User"}`;
+
+const currentUser = localStorage.getItem("currentuser");
+
+if (!currentUser) {
+    window.location.href = "login.html";
+}
+
+function userKey(key) {
+    return `${currentUser}_${key}`;
+}
 
 // Initialize totals from localStorage
 let totalIncome = Number(localStorage.getItem("totalIncome") || 0);
@@ -126,100 +135,167 @@ document.getElementById("expensespace").innerText = `$${totalExpense}`;
 // Add Income
 function incomeaddbtn() {
     const incometype = document.getElementById("incometype").value.trim();
-    const incomerp = document.getElementById("incomerp").value.trim();
-    const amount = Number(incomerp);
+    const amount = Number(document.getElementById("incomerp").value.trim());
 
-    if (!incometype || !incomerp || isNaN(amount) || !Number.isInteger(amount)) {
-        alert("Enter a valid income type and a whole number amount!");
+    if (!incometype || isNaN(amount)) {
+        alert("Enter valid income details");
         return;
     }
 
     totalIncome += amount;
     balance += amount;
 
-    // Save to localStorage
-    localStorage.setItem("totalIncome", totalIncome);
-    localStorage.setItem("balance", balance);
+    localStorage.setItem(userKey("totalIncome"), totalIncome);
+    localStorage.setItem(userKey("balance"), balance);
 
-    // Update display
     document.getElementById("incomespace").innerText = `$${balance}`;
-
-    // Add row to Income table
-    const incometablebody = document.getElementById("incomeTableBody");
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-        <td class="pr-15">${incometype}</td>
-        <td class="pr-15">$${amount}</td>
-        <td class="pr-15">$${balance}</td>
-        <td class="pr-15">${new Date().toLocaleString()}</td>
+const row = `
+        <tr>
+            <td class="pr-15">${incometype}</td>
+            <td class="pr-15">$${amount}</td>
+            <td class="pr-15">$${balance}</td>
+            <td class="pr-15">${new Date().toLocaleString()}</td>
+        </tr>
     `;
-    incometablebody.appendChild(newRow);
 
-    // Clear inputs
+    const tbody = document.getElementById("incomeTableBody");
+    tbody.innerHTML += row;
+
+    localStorage.setItem(userKey("incomeTable"), tbody.innerHTML);
+
     document.getElementById("incometype").value = "";
     document.getElementById("incomerp").value = "";
-    localStorage.setItem(`${currentUser}_totalIncome`, totalIncome);
-localStorage.setItem(`${currentUser}_balance`, balance);
 }
+//     const incometype = document.getElementById("incometype").value.trim();
+//     const incomerp = document.getElementById("incomerp").value.trim();
+//     const amount = Number(document.getElementById("incomerp").value.trim());
+
+//     if (!incometype || !incomerp || isNaN(amount) || !Number.isInteger(amount)) {
+//         alert("Enter a valid income details");
+//         return;
+//     }
+
+//     totalIncome += amount;
+//     balance += amount;
+
+//     // Save to localStorage
+//     localStorage.setItem(userKey("totalIncome"), totalIncome);
+//     localStorage.setItem(userKey("balance"), balance);
+
+//     // Update display
+//     document.getElementById("incomespace").innerText = `$${balance}`;
+
+//     // Add row to Income table
+//     const incometablebody = document.getElementById("incomeTableBody");
+//     const newRow = document.createElement("tr");
+//     newRow.innerHTML = `
+//         <td class="pr-15">${incometype}</td>
+//         <td class="pr-15">$${amount}</td>
+//         <td class="pr-15">$${balance}</td>
+//         <td class="pr-15">${new Date().toLocaleString()}</td>
+//     `;
+//     incometablebody.appendChild(newRow);
+
+//     // Clear inputs
+//     document.getElementById("incometype").value = "";
+//     document.getElementById("incomerp").value = "";
+//     localStorage.setItem(`${currentUser}_totalIncome`, totalIncome);
+// localStorage.setItem(`${currentUser}_balance`, balance);
+// }
 
 // Add Expense
 function expenseaddbtn() {
     const expensetype = document.getElementById("expensetype").value.trim();
-    const expenseamt = document.getElementById("expenseamt").value.trim();
-    const amount = Number(expenseamt);
+    const amount = Number(document.getElementById("expenseamt").value.trim());
 
-    if (!expensetype || !expenseamt || isNaN(amount) || !Number.isInteger(amount)) {
-        alert("Enter a valid expense type and a whole number amount!");
+    if (!expensetype || isNaN(amount)) {
+        alert("Enter valid expense details");
         return;
     }
 
     totalExpense += amount;
     balance -= amount;
 
-    // Save to localStorage
-    localStorage.setItem("totalExpense", totalExpense);
-    localStorage.setItem("balance", balance);
+    localStorage.setItem(userKey("totalExpense"), totalExpense);
+    localStorage.setItem(userKey("balance"), balance);
 
-    // Update display
     document.getElementById("expensespace").innerText = `$${totalExpense}`;
     document.getElementById("incomespace").innerText = `$${balance}`;
-
-    // Add row to Expense table
-    const expensetablebody = document.getElementById("expenseTableBody");
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-        <td class="pr-15">${expensetype}</td>
-        <td class="pr-15">$${amount}</td>
-        <td class="pr-15">$${balance}</td>
-        <td class="pr-15">${new Date().toLocaleString()}</td>
+const row = `
+        <tr>
+            <td class="pr-15">${expensetype}</td>
+            <td class="pr-15">$${amount}</td>
+            <td class="pr-15">$${balance}</td>
+            <td class="pr-15">${new Date().toLocaleString()}</td>
+        </tr>
     `;
-    expensetablebody.appendChild(newRow);
 
-    // Clear inputs
+    const tbody = document.getElementById("expenseTableBody");
+    tbody.innerHTML += row;
+
+    localStorage.setItem(userKey("expenseTable"), tbody.innerHTML);
+
     document.getElementById("expensetype").value = "";
     document.getElementById("expenseamt").value = "";
-    localStorage.setItem(`${currentUser}_totalExpense`, totalExpense);
-localStorage.setItem(`${currentUser}_balance`, balance);
-
 }
+//     const expensetype = document.getElementById("expensetype").value.trim();
+//     const expenseamt = document.getElementById("expenseamt").value.trim();
+//     const amount = Number(expenseamt);
+
+//     if (!expensetype || !expenseamt || isNaN(amount) || !Number.isInteger(amount)) {
+//         alert("Enter a valid expense type and a whole number amount!");
+//         return;
+//     }
+
+//     totalExpense += amount;
+//     balance -= amount;
+
+//     // Save to localStorage
+//     localStorage.setItem("totalExpense", totalExpense);
+//     localStorage.setItem("balance", balance);
+
+//     // Update display
+//     document.getElementById("expensespace").innerText = `$${currentUser.totalExpense}`;
+//     document.getElementById("incomespace").innerText = `$${currentUser.balance}`;
+
+//     // Add row to Expense table
+//     const expensetablebody = document.getElementById("expenseTableBody");
+//     const newRow = document.createElement("tr");
+//     newRow.innerHTML = `
+//         <td class="pr-15">${expensetype}</td>
+//         <td class="pr-15">$${amount}</td>
+//         <td class="pr-15">$${balance}</td>
+//         <td class="pr-15">${new Date().toLocaleString()}</td>
+//     `;
+//     expensetablebody.appendChild(newRow);
+
+//     // Clear inputs
+//     document.getElementById("expensetype").value = "";
+//     document.getElementById("expenseamt").value = "";
+//     localStorage.setItem(`${currentUser}_totalExpense`, totalExpense);
+// localStorage.setItem(`${currentUser}_balance`, balance);
+
+// }
 
 function clearAll() {
-    if (confirm("Are you sure you want to clear all records?")) {
-        totalIncome = 0;
-        totalExpense = 0;
-        balance = 0;
+    if (!confirm("Are you sure you want to clear all records?"))return; 
+        totalIncome =totalExpense = balance = 0;
 
-        localStorage.setItem("totalIncome", 0);
-        localStorage.setItem("totalExpense", 0);
-        localStorage.setItem("balance", 0);
-            localStorage.setItem(`${currentUser}_incomeTable`, "");
-        localStorage.setItem(`${currentUser}_expenseTable`, "");
+        localStorage.setItem(userKey("totalIncome"));
+        localStorage.setItem(userKey("totalExpense"));
+        localStorage.setItem(userKey("balance"));
+            localStorage.setItem(userKey("incomeTable"));
+        localStorage.setItem(userKey("expenseTable"));
 
         document.getElementById("incomespace").innerText = "$0";
         document.getElementById("expensespace").innerText = "$0";
         document.getElementById("incomeTableBody").innerHTML = "";
         document.getElementById("expenseTableBody").innerHTML = "";
-    }
+    
+}
+function logoutbtn(){
+    localStorage.removeItem("currentuser")
+    window.location.href="login.html"
 }
 </script>
 
