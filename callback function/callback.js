@@ -9,10 +9,6 @@ function call(callback,n){
 console.log(call(callback,3));//27
 
 
-
-
-
-
 function sayHello(){
     console.log("Hello");
     

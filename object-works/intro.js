@@ -12,7 +12,7 @@
 //     method2(){}
 // }
 
-//property shiuld be unique
+//property should be unique
 
 var employee={
     name:"arya",

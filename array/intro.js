@@ -11,7 +11,7 @@
 //string ""
 //define var str ="hello";
 //keeps order
-//duplicated allowed
+//duplicates are allowed
 //immutable
 //methods
 

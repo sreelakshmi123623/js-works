@@ -7,10 +7,10 @@ let result = []
 
 for(let n of arr){
     if(n<0){
-        result.unshift(-1);
+        result.unshift(n);
     }
     else{
-        result.push(0)
+        result.push(n)
     }
    
      

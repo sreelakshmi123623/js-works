@@ -66,6 +66,7 @@
             let fetchh = Number(document.getElementById("amountdep").value)
             if (!taking) {
                 alert("Account doesnt exists")
+                window.location.href="register.html"
                 return;
             }
 
@@ -74,10 +75,8 @@
             localStorage.setItem(accnumberr, JSON.stringify(taking))
             document.getElementById("deposit").innerHTML = `Amount ${fetchh} is stored, account balance is ${taking.balance}`
             alert("Amount is deposited successfuly")
-
-
-
-
+            accnumber.value=""
+            amountdep.value=""
         }
 
         function withdrawbtn() {
@@ -88,12 +87,16 @@
 
             if (!acctakingg) {
                 alert("account doesnt exists")
+                window.location.href="register.html"
+                return;
             }
             acctakingg.balance = Number(acctakingg.balance) - wamount
 
             localStorage.setItem(acctaking, JSON.stringify(acctakingg))
             document.getElementById("withdrawel").innerHTML = `Amount ${wamount} is withdrawing, account balance is ${acctakingg.balance}`
             alert("Amount withdrawed successfuly")
+            withdamt.value=""
+            withdaccn.value=""
 
         }
     </script>

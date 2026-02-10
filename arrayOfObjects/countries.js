@@ -84,7 +84,7 @@ var countries = [
 // console.log(countries.map(c=>c.name));//map return as array
 // countries.forEach(c=>console.log(c.name));//takes each variables
 
-// console.log("\n\ncountries borders hreater than 2 ,filter forEach =");
+// console.log("\n\ncountries borders greater than 2 ,filter forEach =");
 
 // countries.filter(c=>c.borders.length>2).forEach(c=>console.log(c.name));//can use map() or forEach()
 
@@ -92,6 +92,9 @@ var countries = [
 
 // //list name of country with currency code as eur
 // console.log("\n\n");
+
+// checking= countries.filter(c=>c.currency=="EUR").map(c=>c.name)
+// console.log(checking);
 
 
 // countries.filter(c=>c.currency.toLowerCase()=="eur").forEach(c=>console.log(c.name));
@@ -101,7 +104,30 @@ var countries = [
 
 
 // 2. Filter and list countries that have the same currency.
+// var checking={}
+// for(let c of countries){
+
+//   var curr=c.currency
+//   var counname=c.name
+  
+//     if(curr in checking){
+//       checking[curr].push(counname)
+//     }
+//     else{
+//       checking[curr]=[counname]
+//     }
+//   }
+
+// console.log(checking);
+
+
+
 // 3. Sort all countries in alphabetical order (by country name).
+// alphabetic=countries.sort((c1,c2)=>c1.name.localeCompare(c2.name))
+// console.log(alphabetic);
+
+
+
 // 4. Count how many countries use each language.
 
 // var checking={} 
@@ -142,13 +168,13 @@ var countries = [
 //english :['india','canada',....]
 
 // 7. List countries that have more than one language.
-// var moreThanOneLang=[]
-// for(let c of countries){
-//   if(c.language.length>1){
-//     moreThanOneLang.push(c.name)
-//   }
-// }
-// console.log(moreThanOneLang);
+var moreThanOneLang=[]
+for(let c of countries){
+  if(c.language.length>1){
+    moreThanOneLang.push(c.name)
+  }
+}
+console.log(moreThanOneLang);
 
 
 // // 8. Find the average population of all countries.
@@ -207,18 +233,18 @@ var countries = [
 
 // Filter and list countries that have the same currency.
 
-// var sameCurrencty={}
-// for(let c of countries){
-//     var countries=c.countries
-//     var currency=c.currency
-//     if(currency in sameCurrencty){
-//         sameCurrencty[currency]+=1
-//     }
-//     else{
-//         sameCurrencty[currency]=1
-//     }
-// }
-// console.log(sameCurrencty);
+var sameCurrencty={}
+for(let c of countries){
+    var cname=c.name
+    var currency=c.currency
+    if(currency in sameCurrencty){
+        sameCurrencty[currency].push(cname)
+    }
+    else{
+        sameCurrencty[currency]=[cname]
+    }
+}
+console.log(sameCurrencty);
 
 // console.log(Object.entries(sameCurrencty).sort((c1,c2)=>c2[1]-c1[1]));
 

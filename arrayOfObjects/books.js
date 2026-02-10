@@ -92,5 +92,5 @@ console.log(most);
 
 //lowest  count of language
 var lowestC=Object.entries(languageCount).reduce((l1,l2)=>l1[1]<l2[1]?l1:l2)
-console.log(lowestC);
+console.log(lowestC);//reuce works only with array so by using object.entries converting object to array then applying reduce() 
 

@@ -33,12 +33,17 @@
                 for (let name of country) {
 
                     page.innerHTML += `
-                <div class="w-80">${name.flags}</div>
-            
-                
-                `
+                    <div class="border-1 w-120 p-4 mt-10 pl-12">
+
+                <div class="w-100 mt-10 mb-10">${name.flags.alt}</div>
+               <img src=${name.flags.svg} alt="">
+                <img class="w-80 h-90 mt-10"  src=${name.coatOfArms.svg} >
+                        </div>
+                ` 
                 }
+                 
             }
+           
 
 
             // console.log(data);

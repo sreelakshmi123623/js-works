@@ -53,25 +53,25 @@ console.log(foods);
 // console.log(food);
 
 
-let check=foods.indexOf("salt-mango-tree")
-console.log(check);
+// let check=foods.indexOf("salt-mango-tree")
+// console.log(check);
 
-let checks=foods.lastIndexOf("salt-mango-tree");
-console.log(checks);
+// let checks=foods.lastIndexOf("salt-mango-tree");
+// console.log(checks);
 
-let exists = foods.includes("dosa")//Determines whether an array includes a certain element, returning true or false as appropriate.
-console.log(exists);
+// let exists = foods.includes("dosa")//Determines whether an array includes a certain element, returning true or false as appropriate.
+// console.log(exists);
 
 
 let portion = foods.slice(0,3)//for extract a portion
 console.log(portion);
 
 
-foods.splice(1,1);//index number of start deleting ,count of objects that need to delete 
-console.log(foods);
+// foods.splice(1,1);//index number of start deleting ,count of objects that need to delete 
+// console.log(foods);
 
 
-//console.log(foods);
+// //console.log(foods);
 
-foods.splice(1,1,"coffee")//index number of start deleting ,delete count of object ,"we can add an object in the space that we deleted"
-console.log(foods);
+// foods.splice(1,1,"coffee")//index number of start deleting ,delete count of object ,"we can add an object in the space that we deleted"
+// console.log(foods);
